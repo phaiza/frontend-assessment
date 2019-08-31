@@ -1,3 +1,21 @@
+Task Completed
+---
+Hi, I have just finished all the tasks listed below. 
+Here are some points about the work
+
+1. Used SASS
+2. No jQuery. Everything is pure javascript
+3. Used Fetch API to read JSON data
+4. Used bootstrap grid css for the layout
+
+You need a live server to view the json data on the accordian and tabs.
+
+If you have any questions let me know.
+
+Thanks.
+
+Faiza A.
+
 Introduction
 ---
 Thanks for taking the time to complete this frontend technical assessment. We will be focusing on software quality (scalability, readability, maintainability, etc.) and your eye for detail. You may include any libraries. Bonus points if SASS/LESS is used and jQuery is not used.
