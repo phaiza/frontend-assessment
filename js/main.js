@@ -114,25 +114,14 @@ var myTabs1 = tabs({
 // Initialize Tabs
 myTabs1.init();
 
-function loadJSON(callback) {
-  var xobj = new XMLHttpRequest();
-  xobj.overrideMimeType("application/json");
-  xobj.open("GET", "../data.json", true); // Replace 'my_data' with the path to your file
-  xobj.onreadystatechange = function() {
-    if (xobj.readyState == 4 && xobj.status == "200") {
-      // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
-      callback(xobj.responseText);
-    }
-  };
-  xobj.send(null);
-}
-
-function initJson() {
-  loadJSON(function(response) {
-    // Parse JSON string into object
-    var actual_JSON = JSON.parse(response);
-    for (var i = 0, l = actual_JSON.length; i < l; i++) {
-      var obj = actual_JSON[i];
+// Replace ./data.json with your JSON feed
+fetch("./data.json")
+  .then(response => {
+    return response.json();
+  })
+  .then(data => {
+    for (var i = 0, l = data.length; i < l; i++) {
+      var obj = data[i];
       //alert(obj.title);
       //fill in accordian
 
@@ -143,7 +132,8 @@ function initJson() {
       document.getElementById("tab" + i).innerHTML = obj.title;
       document.getElementById("tab-content" + i).innerHTML = obj.content;
     }
+  })
+  .catch(err => {
+    // Do something for an error here
+    console.log("Error: Unable to fetch Json data from file.");
   });
-}
-
-initJson();
